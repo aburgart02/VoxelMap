@@ -12,17 +12,17 @@ public class Map {
   public int MapId;
 
   @Column(name = "Title")
-  public String title;
+  public String Title;
 
   public Map() {
 
   }
 
   public Map(String title) {
-    this.title = title;
+    this.Title = title;
   }
 
   public String GetTitle() {
-      return title;
+      return Title;
   }
 }
