@@ -6,46 +6,44 @@
 </head>
 
 <body>
-<div>
-    <form method="POST" action="/upload-map">
-        <h2>Загрузить карту</h2>
-        <div>
-            <p>Название</p>
-            <input name="title"/>
-            <p>Размер</p>
-            <select name="size">
-                <option value="0">128x128</option>
-                <option value="1">256x256</option>
-                <option value="2">512x512</option>
-            </select>
-            <p>Погодные эффекты</p>
-            <p>Дождь</p>
-            <input type="checkbox" name="weatherEffects" value="0">
-            <p>Туман</p>
-            <input type="checkbox" name="weatherEffects" value="1">
-            <p>Песчаная буря</p>
-            <input type="checkbox" name="weatherEffects" value="2">
-            <p>Время суток</p>
-            <select name="timeOfDay">
-                <option value="0">Утро</option>
-                <option value="1">День</option>
-                <option value="2">Вечер</option>
-                <option value="3">Ночь</option>
-            </select>
-            <p>Режим игры</p>
-            <select name="gameMode">
-                <option value="0">Deathmatch</option>
-                <option value="1">Командный</option>
-                <option value="2">Захват флага</option>
-            </select>
-            <p>Описание</p>
-            <textarea name="description"></textarea>
-            <input type="file" name="image">
-            <button type="submit">Загрузить</button>
-        </div>
-    </form>
-
-    <a href="/">Главная</a>
-</div>
+    <div>
+        <form method="POST" action="/upload-map">
+            <h2>Загрузить карту</h2>
+            <div>
+                <p>Название</p>
+                <input name="title"/>
+                <p>Размер</p>
+                <select name="size">
+                    <option value="0">128x128</option>
+                    <option value="1">256x256</option>
+                    <option value="2">512x512</option>
+                </select>
+                <p>Погодные эффекты</p>
+                <p>Дождь</p>
+                <input type="checkbox" name="weatherEffects" value="0">
+                <p>Туман</p>
+                <input type="checkbox" name="weatherEffects" value="1">
+                <p>Песчаная буря</p>
+                <input type="checkbox" name="weatherEffects" value="2">
+                <p>Время суток</p>
+                <select name="timeOfDay">
+                    <option value="0">Утро</option>
+                    <option value="1">День</option>
+                    <option value="2">Вечер</option>
+                    <option value="3">Ночь</option>
+                </select>
+                <p>Режим игры</p>
+                <select name="gameMode">
+                    <option value="0">Deathmatch</option>
+                    <option value="1">Командный</option>
+                    <option value="2">Захват флага</option>
+                </select>
+                <p>Описание</p>
+                <textarea name="description"></textarea>
+                <button type="submit">Загрузить</button>
+            </div>
+        </form>
+        <a href="/">Главная</a>
+    </div>
 </body>
 </html>

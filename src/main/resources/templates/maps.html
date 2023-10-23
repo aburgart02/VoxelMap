@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title>Список карт</title>
 </head>
 <body>
     <tr th:each="map : ${maps}">
-        <p><a th:href="@{/maps/{id}(id=${map.MapId})}"><td th:text="${map.Title}"></td></a><p>
+        <p>
+            <a th:href="@{/maps/{id}(id=${map.MapId})}">
+            <td th:text="${map.Title}"></td></a>
+        <p>
     </tr>
 </body>
 </html>
