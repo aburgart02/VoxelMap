@@ -6,7 +6,7 @@
 <body>
     <tr th:each="map : ${maps}">
         <p>
-            <a th:href="@{/maps/{id}(id=${map.MapId})}">
+            <a th:href="@{/maps/{id}(id=${map.Id})}">
             <td th:text="${map.Title}"></td></a>
         <p>
     </tr>

@@ -1,5 +1,6 @@
 package com.VoxelMaps.controller;
 
+import com.VoxelMaps.model.ViewMap;
 import com.VoxelMaps.repository.MapRepository;
 import com.VoxelMaps.model.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,25 +43,31 @@ public class MapsController {
     @RequestMapping("/maps")
     public String getMaps(ModelMap model) {
         List<Map> maps = new ArrayList<Map>(mapRepository.findAll());
-        model.addAttribute("maps", maps);
+        List<ViewMap> viewMaps = new ArrayList<ViewMap>();
+        for (int i = 0; i < maps.size(); i++) {
+            viewMaps.add(createViewMap(maps.get(i)));
+        }
+        model.addAttribute("maps", viewMaps);
         return "maps";
     }
 
-    @RequestMapping("/maps/{id}")
-    public String getMapById(ModelMap model, @PathVariable("id") long id)
-    {
-        Map map = mapRepository.findAll().get((int) id - 1);
+    public ViewMap createViewMap(Map map) {
         ArrayList<String> weatherEffectsList = new ArrayList<String>();
         if (map.getWeatherEffects() != null) {
             for (int i = 0; i < map.getWeatherEffects().length; i++) {
                 weatherEffectsList.add(weatherEffects.get(map.getWeatherEffects()[i]));
             }
         }
-        model.addAttribute("map", map);
-        model.addAttribute("size", size.get(map.getSize()));
-        model.addAttribute("weatherEffects", weatherEffectsList);
-        model.addAttribute("timeOfDay", timeOfDay.get(map.getTimeOfDay()));
-        model.addAttribute("gameMode", gameMode.get(map.getGameMode()));
+        return new ViewMap(map.getMapId(), map.getTitle(), size.get(map.getSize()), weatherEffectsList,
+                timeOfDay.get(map.getTimeOfDay()), gameMode.get(map.getGameMode()),  map.getDescription(),
+                map.getDateOfAddition(), map.getRating());
+    }
+
+    @RequestMapping("/maps/{id}")
+    public String getMapById(ModelMap model, @PathVariable("id") long id)
+    {
+        Map map = mapRepository.findAll().get((int) id - 1);
+        model.addAttribute("map", createViewMap(map));
         return "map";
     }
 }

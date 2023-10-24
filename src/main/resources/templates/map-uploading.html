@@ -7,7 +7,7 @@
 
 <body>
     <div>
-        <form method="POST" action="/upload-map">
+        <form method="POST" action="/upload-map" enctype="multipart/form-data">
             <h2>Загрузить карту</h2>
             <div>
                 <p>Название</p>
@@ -40,13 +40,9 @@
                 </select>
                 <p>Описание</p>
                 <textarea name="description"></textarea>
+                <input type="file" name="file" /><br />
                 <button type="submit">Загрузить</button>
             </div>
-        </form>
-
-        <form method="POST" action="/upload-image" enctype="multipart/form-data">
-            <input type="file" name="file" /><br />
-            <br /> <input type="submit" value="Submit" />
         </form>
 
         <a href="/">Главная</a>
