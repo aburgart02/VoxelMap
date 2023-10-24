@@ -19,7 +19,6 @@ public class ImageService {
     public String uploadImage(MultipartFile imageFile) throws IOException {
         var imageToSave = new Image(imageFile.getOriginalFilename(), imageFile.getContentType(),
                 ImageUtils.compressImage(imageFile.getBytes()));
-        System.out.println(imageToSave.name);
         imageRepository.save(imageToSave);
         return "file uploaded: " + imageFile.getOriginalFilename();
     }
