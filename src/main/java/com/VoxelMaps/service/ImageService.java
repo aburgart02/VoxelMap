@@ -23,8 +23,8 @@ public class ImageService {
         return "file uploaded: " + imageFile.getOriginalFilename();
     }
 
-    public byte[] downloadImage(String imageName) {
-        Optional<Image> dbImage = imageRepository.findById(1L);
+    public byte[] downloadImage(int imageId) {
+        Optional<Image> dbImage = Optional.ofNullable(imageRepository.findAll().get(imageId - 1));
         return dbImage.map(image -> {
             try {
                 return ImageUtils.decompressImage(image.getImageData());

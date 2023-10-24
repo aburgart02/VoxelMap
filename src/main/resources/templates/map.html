@@ -4,6 +4,16 @@
     <title>Список карт</title>
 </head>
 <body>
-    <p th:text="${map.Title}"></p>
+    <p th:text="${map.title}"></p>
+    <p th:text="${map.dateOfAddition}"></p>
+    <p th:text="${map.description}"></p>
+    <p th:text="${gameMode}"></p>
+    <p th:text="${map.rating}"></p>
+    <p th:text="${size}"></p>
+    <p th:text="${timeOfDay}"></p>
+    <tr th:each="weatherEffect: ${weatherEffects}">
+        <td th:text="${weatherEffect}" />
+    </tr>
+    <img th:src="@{/download-image/} + ${map.Id}">
 </body>
 </html>

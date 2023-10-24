@@ -13,9 +13,9 @@ public class ImageDownloadController {
     @Autowired
     private ImageService imageService;
 
-    @GetMapping("/{fileName}")
-    public ResponseEntity<?> downloadImage(@PathVariable String fileName) {
-        byte[] imageData = imageService.downloadImage(fileName);
+    @GetMapping("/{imageId}")
+    public ResponseEntity<?> downloadImage(@PathVariable String imageId) {
+        byte[] imageData = imageService.downloadImage(Integer.parseInt(imageId));
         return ResponseEntity.status(HttpStatus.OK)
                 .contentType(MediaType.valueOf(IMAGE_PNG_VALUE))
                 .body(imageData);
