@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class MapUploadingController {
@@ -55,16 +59,16 @@ public class MapUploadingController {
     @ResponseBody
     public String upload(MultipartHttpServletRequest request, HttpServletResponse response,
                          @RequestParam("title") String title,
-                          @RequestParam("size") int size, @RequestParam("weatherEffects") int[] weatherEffects,
-                          @RequestParam("timeOfDay") int timeOfDay, @RequestParam("gameMode") int gameMode,
-                          @RequestParam("description") String description) throws IOException {
+                         @RequestParam("size") int size, @RequestParam("weatherEffects") Optional<int[]> weatherEffects,
+                         @RequestParam("timeOfDay") int timeOfDay, @RequestParam("gameMode") int gameMode,
+                         @RequestParam("description") String description) throws IOException {
         String responseMessage = "OK";
         MultipartFile file = request.getFile("file");
         String uploadImage = imageService.uploadImage(file);
         Map map = new Map();
         map.setTitle(title);
         map.setSize(size);
-        map.setWeatherEffects(weatherEffects);
+        map.setWeatherEffects(weatherEffects.orElse(null));
         map.setTimeOfDay(timeOfDay);
         map.setGameMode(gameMode);
         map.setDescription(description);
