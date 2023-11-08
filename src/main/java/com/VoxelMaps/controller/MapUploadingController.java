@@ -3,6 +3,7 @@ package com.VoxelMaps.controller;
 import com.VoxelMaps.model.Map;
 import com.VoxelMaps.service.ImageService;
 import com.VoxelMaps.service.MapService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,10 @@ public class MapUploadingController {
     private ImageService imageService;
 
     @GetMapping("/upload-map")
-    public String registration(Model model) {
+    public String registration(Model model, HttpServletRequest request) {
+        String user=request.getUserPrincipal().getName();
         model.addAttribute("map", new Map());
+        model.addAttribute("username", user);
         return "map-uploading";
     }
 
@@ -50,7 +53,7 @@ public class MapUploadingController {
                          @RequestParam("title") String title,
                           @RequestParam("size") int size, @RequestParam("weatherEffects") int[] weatherEffects,
                           @RequestParam("timeOfDay") int timeOfDay, @RequestParam("gameMode") int gameMode,
-                          @RequestParam("description") String description) throws IOException{
+                          @RequestParam("description") String description) throws IOException {
         String responseMessage = "OK";
         MultipartFile file = request.getFile("file");
         String uploadImage = imageService.uploadImage(file);
