@@ -4,6 +4,10 @@
     <title>Список карт</title>
 </head>
 <body>
+    <div th:switch="${username}">
+        <p th:case="null">Not auth</p>
+        <p th:case="*">Auth</p>
+    </div>
     <tr th:each="map : ${maps}">
         <p>
             <a th:href="@{/maps/{id}(id=${map.Id})}">

@@ -43,14 +43,18 @@ public class MapsController {
 
     @RequestMapping("/maps")
     public String getMaps(ModelMap model, HttpServletRequest request) {
-        String user=request.getUserPrincipal().getName();
+        if (request.getUserPrincipal() != null) {
+            model.addAttribute("username", request.getUserPrincipal().getName());
+        }
+        else {
+            model.addAttribute("username", null);
+        }
         List<Map> maps = new ArrayList<Map>(mapRepository.findAll());
         List<ViewMap> viewMaps = new ArrayList<ViewMap>();
         for (int i = 0; i < maps.size(); i++) {
             viewMaps.add(createViewMap(maps.get(i)));
         }
         model.addAttribute("maps", viewMaps);
-        model.addAttribute("username", user);
         return "maps";
     }
 
@@ -69,10 +73,14 @@ public class MapsController {
     @RequestMapping("/maps/{id}")
     public String getMapById(ModelMap model, @PathVariable("id") long id, HttpServletRequest request)
     {
-        String user=request.getUserPrincipal().getName();
+        if (request.getUserPrincipal() != null) {
+            model.addAttribute("username", request.getUserPrincipal().getName());
+        }
+        else {
+            model.addAttribute("username", null);
+        }
         Map map = mapRepository.findAll().get((int) id - 1);
         model.addAttribute("map", createViewMap(map));
-        model.addAttribute("username", user);
         return "map";
     }
 }

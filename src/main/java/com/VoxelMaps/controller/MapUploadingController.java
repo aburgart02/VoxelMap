@@ -23,9 +23,13 @@ public class MapUploadingController {
 
     @GetMapping("/upload-map")
     public String registration(Model model, HttpServletRequest request) {
-        String user=request.getUserPrincipal().getName();
+        if (request.getUserPrincipal() != null) {
+            model.addAttribute("username", request.getUserPrincipal().getName());
+        }
+        else {
+            model.addAttribute("username", null);
+        }
         model.addAttribute("map", new Map());
-        model.addAttribute("username", user);
         return "map-uploading";
     }
 
