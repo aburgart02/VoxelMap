@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:form="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
     <meta charset="utf-8">
     <title>Регистрация</title>
@@ -8,17 +9,44 @@
 <body>
 <div>
     <form method="POST" action="/registration">
-        <h2>Регистрация</h2>
-        <div>
-            <input name="username" type="text" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" placeholder="Password"/>
-            <input name="passwordConfirm" type="password" placeholder="PasswordConfirm"/>
-            <button type="submit">Registration</button>
+        <div style="width: 600px; height: 600px; position: fixed; top: 50%; left: 50%;
+                    -webkit-transform: translate(-50%, -50%);
+                    -ms-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);">
+            <div style="width: 600px; height: 600px; left: 0px; top: 0px; position: absolute;
+                        background: #006400; border-radius: 10px">
+                <div style="width: 253px; height: 85px; left: 230px; top: 60px; position: absolute;
+                            color: white; font-size: 40px; font-family: Inter; font-weight: 400;
+                            word-wrap: break-word">Registration</div>
+            </div>
+            <div style="width: 329px; height: 56px; left: 139px; top: 184px; position: absolute">
+                <input style="width: 329px; height: 56px; left: 0px; top: 0px; position: absolute; color:black;
+                              font-size: 30px; font-family: Inter; font-weight: 400; word-wrap: break-word"
+                       name="username" type="text" placeholder="Username"/>
+            </div>
+            <div style="width: 329px; height: 62px; left: 139px; top: 264px; position: absolute">
+                <input style="width: 329px; height: 62px; left: 0px; top: 0px; position: absolute; color: black;
+                              font-size: 30px; font-family: Inter; font-weight: 400; word-wrap: break-word"
+                       name="password" type="password" placeholder="Password"/>
+            </div>
+            <div style="width: 329px; height: 62px; left: 139px; top: 344px; position: absolute">
+                <input style="width: 329px; height: 62px; left: 0px; top: 0px; position: absolute; color: black;
+                              font-size: 30px; font-family: Inter; font-weight: 400; word-wrap: break-word"
+                       name="passwordConfirm" type="password" placeholder="PasswordConfirm"/>
+            </div>
+            <div style="width: 252px; height: 92px; left: 325px; top: 478px; position: absolute">
+                <button style="width: 252px; height: 92px; position: absolute; color: black;
+                               font-size: 30px; font-family: Inter; font-weight: 400; word-wrap: break-word; border-radius: 10px"
+                        type="submit">Registration</button>
+            </div>
+            <div style="width: 252px; height: 92px; left: 25px; top: 478px; position: absolute; background: black; border-radius: 10px">
+                <a style="width: 252px; height: 92px; margin: 25px 0; position: absolute; font-size: 30px;
+                          font-family: Inter; font-weight: 400; color: white;
+                          text-align: center; text-decoration: none;"
+                   href="/">Главная</a>
+            </div>
         </div>
     </form>
-
-    <a href="/">Главная</a>
 </div>
 </body>
 </html>

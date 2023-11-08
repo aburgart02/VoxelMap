@@ -1,0 +1,51 @@
+.account {
+    width: 20%;
+    height: 8%;
+    position: fixed;
+    left: 99%;
+    top: 1%;
+    -webkit-transform: translate(-99%, -1%);
+    -ms-transform: translate(-99%, -1%);
+    transform: translate(-99%, -1%);
+    position: absolute;
+    background: #006400;
+    border-radius: 45px;
+    color:white;
+    font-size: 30px;
+    position: absolute;
+    font-family: Inter;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.search {
+    width: 50%;
+    height: 7.5%;
+    background: #006400;
+    border-radius: 45px;
+    position: absolute;
+    left: 50%;
+    top: 1%;
+    -webkit-transform: translate(-50%, -1%);
+    -ms-transform: translate(-50%, -1%);
+    transform: translate(-50%, -1%);
+    color: white;
+    font-size: 30px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.search p {
+
+}
+
+table {
+   position: fixed;
+   top: 25%;
+   left: 4%;
+   background: #D9D9D9;
+   border: 1px solid grey;
+}
