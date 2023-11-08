@@ -1,51 +1,90 @@
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
     <meta charset="utf-8">
     <title>Upload map</title>
 </head>
 
 <body>
-    <div>
+    <div class="map-upload">
+        <div th:switch="${username}" class="account">
+            <span th:case="null">
+                <a th:href="@{/login}">
+                    Log in
+                </a>
+            </span>
+            <span th:case="*">
+                <a th:href="@{/account}">
+                    <span th:text="${username}"></span>
+                </a>
+            </span>
+        </div>
         <form method="POST" action="/upload-map" enctype="multipart/form-data">
-            <h2>Загрузить карту</h2>
+            <h2>Загрузка карты</h2>
             <div>
-                <p>Название</p>
-                <input name="title"/>
-                <p>Размер</p>
-                <select name="size">
-                    <option value="0">128x128</option>
-                    <option value="1">256x256</option>
-                    <option value="2">512x512</option>
-                </select>
-                <p>Погодные эффекты</p>
-                <p>Дождь</p>
-                <input type="checkbox" name="weatherEffects" value="0">
-                <p>Туман</p>
-                <input type="checkbox" name="weatherEffects" value="1">
-                <p>Песчаная буря</p>
-                <input type="checkbox" name="weatherEffects" value="2">
-                <p>Время суток</p>
-                <select name="timeOfDay">
-                    <option value="0">Утро</option>
-                    <option value="1">День</option>
-                    <option value="2">Вечер</option>
-                    <option value="3">Ночь</option>
-                </select>
-                <p>Режим игры</p>
-                <select name="gameMode">
-                    <option value="0">Deathmatch</option>
-                    <option value="1">Командный</option>
-                    <option value="2">Захват флага</option>
-                </select>
-                <p>Описание</p>
-                <textarea name="description"></textarea>
-                <input type="file" name="file" /><br />
-                <button type="submit">Загрузить</button>
+                <input class="title" placeholder="Название" name="title"/>
+                <div class="size">
+                    <p>Размер</p>
+                    <select name="size">
+                        <option value="0">128x128</option>
+                        <option value="1">256x256</option>
+                        <option value="2">512x512</option>
+                    </select>
+                </div>
+                <div class="weather-effects">
+                    <p>Погодные эффекты</p>
+                    <span>Дождь</span>
+                    <label>
+                        <input type="checkbox" name="weatherEffects" value="0">
+                    </label>
+                    <span>Туман</span>
+                    <label>
+                        <input type="checkbox" name="weatherEffects" value="1">
+                    </label>
+                    <span>Песчаная буря</span>
+                    <label>
+                        <input type="checkbox" name="weatherEffects" value="2">
+                    </label>
+                </div>
+                <div class="time-of-day">
+                    <p>Время суток</p>
+                    <label>
+                        <select name="timeOfDay">
+                            <option value="0">Утро</option>
+                            <option value="1">День</option>
+                            <option value="2">Вечер</option>
+                            <option value="3">Ночь</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="game-mode">
+                    <p>Режим игры</p>
+                    <label>
+                        <select name="gameMode">
+                            <option value="0">Deathmatch</option>
+                            <option value="1">Командный</option>
+                            <option value="2">Захват флага</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <textarea class="description" name="description" placeholder="Описание"></textarea>
+                    </label>
+                </div>
+                <div class="file-loading">
+                    <p>
+                        Загрузка изображения
+                    </p>
+                    <input class="file-loading" type="file" name="file" /><br />
+                </div>
+                <div class="controls">
+                    <button type="submit">Загрузить карту</button>
+                    <a href="/">Главная</a>
+                </div>
             </div>
         </form>
-
-        <a href="/">Главная</a>
     </div>
 </body>
 </html>

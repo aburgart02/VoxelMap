@@ -1,18 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
     <title>Список карт</title>
 </head>
 <body>
-    <div th:switch="${username}">
-        <p th:case="null">Not auth</p>
-        <p th:case="*">Auth</p>
+    <div th:switch="${username}" class="account">
+        <span th:case="null">
+            <a th:href="@{/login}">
+                Log in
+            </a>
+        </span>
+        <span th:case="*">
+            <a th:href="@{/account}">
+                <span th:text="${username}"></span>
+            </a>
+        </span>
     </div>
-    <tr th:each="map : ${maps}">
-        <p>
+    <div th:each="map : ${maps}" class="mapContainer">
+        <div class="mapCard">
+            <p>
+                <img th:src="@{/download-image/} + ${map.Id}">
+            </p>
             <a th:href="@{/maps/{id}(id=${map.Id})}">
-            <td th:text="${map.Title}"></td></a>
-        <p>
-    </tr>
+                <span th:text="${map.Title}"></span>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
