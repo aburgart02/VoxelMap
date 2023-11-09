@@ -24,6 +24,8 @@ public class ViewMap {
 
     public byte[] Image;
 
+    public byte[] Map;
+
     public ViewMap(int id, String title, String size, ArrayList<String> weatherEffects,
                    String timeOfDay, String gameMode, String description, Date dateOfAddition, int rating) {
         Id = id;

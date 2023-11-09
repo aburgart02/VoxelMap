@@ -15,5 +15,6 @@
         <td th:text="${weatherEffect}" />
     </tr>
     <img th:src="@{/download-image/} + ${map.Id}">
+    <a th:href="@{/download-map-file/} + ${map.Id}">Скачать карту</a>
 </body>
 </html>

@@ -40,6 +40,9 @@ public class Map {
     @Column(name = "image")
     public byte[] Image;
 
+    @Column(name = "map")
+    public byte[] Map;
+
     public Map() {
     }
 
@@ -118,5 +121,10 @@ public class Map {
     public byte[] getImage() { return Image; }
     public void setImage(byte[] image) {
         Image = image;
+    }
+
+    public byte[] getMap() { return Map; }
+    public void setMap(byte[] map) {
+        Map = map;
     }
 }

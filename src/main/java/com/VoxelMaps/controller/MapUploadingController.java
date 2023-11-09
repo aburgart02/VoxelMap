@@ -2,6 +2,7 @@ package com.VoxelMaps.controller;
 
 import com.VoxelMaps.model.Map;
 import com.VoxelMaps.service.ImageService;
+import com.VoxelMaps.service.MapFileService;
 import com.VoxelMaps.service.MapService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 public class MapUploadingController {
@@ -24,6 +22,9 @@ public class MapUploadingController {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private MapFileService mapFileService;
 
     @GetMapping("/upload-map")
     public String registration(Model model, HttpServletRequest request) {
@@ -63,8 +64,10 @@ public class MapUploadingController {
                          @RequestParam("timeOfDay") int timeOfDay, @RequestParam("gameMode") int gameMode,
                          @RequestParam("description") String description) throws IOException {
         String responseMessage = "OK";
-        MultipartFile file = request.getFile("file");
-        String uploadImage = imageService.uploadImage(file);
+        MultipartFile imageFile = request.getFile("imageFile");
+        MultipartFile mapFile = request.getFile("mapFile");
+        String uploadImageFile = imageService.uploadImage(imageFile);
+        String uploadMapFile = mapFileService.uploadMapFile(mapFile);
         Map map = new Map();
         map.setTitle(title);
         map.setSize(size);
