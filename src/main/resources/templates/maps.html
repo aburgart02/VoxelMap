@@ -17,6 +17,10 @@
             </a>
         </span>
     </div>
+    <form method="GET" action="/maps">
+        <input class="input" type="text" name="title" value="" size="30" />
+        <button class="searchButton" type="submit" >Искать</button>
+    </form>
     <div th:each="map : ${maps}" class="mapContainer">
         <div class="mapCard">
             <p>

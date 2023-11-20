@@ -96,7 +96,7 @@ table {
     margin-top: 30px;
 }
 
-.title {
+input {
     font-size: 20px;
 }
 
@@ -150,4 +150,9 @@ h2 {
 .mapCard img {
     height: 300px;
     border: solid darkblue 4px;
+}
+
+.searchButton {
+    font-size: 20px;
+    font-weight: bold;
 }

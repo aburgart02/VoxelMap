@@ -32,9 +32,9 @@ public class MapsController {
         weatherEffects.put(2, "Песчаная буря");
 
         timeOfDay.put(0, "Утро");
-        timeOfDay.put(0, "День");
-        timeOfDay.put(0, "Вечер");
-        timeOfDay.put(0, "Ночь");
+        timeOfDay.put(1, "День");
+        timeOfDay.put(2, "Вечер");
+        timeOfDay.put(3, "Ночь");
 
         gameMode.put(0, "Deathmatch");
         gameMode.put(1, "Командный");
@@ -49,10 +49,13 @@ public class MapsController {
         else {
             model.addAttribute("username", null);
         }
+        var mapTitle = request.getParameter("title") != null ? request.getParameter("title") : "";
         List<Map> maps = new ArrayList<Map>(mapRepository.findAll());
         List<ViewMap> viewMaps = new ArrayList<ViewMap>();
         for (int i = 0; i < maps.size(); i++) {
-            viewMaps.add(createViewMap(maps.get(i)));
+            var map = maps.get(i);
+            if (map.getTitle().toLowerCase().contains(mapTitle.toLowerCase()))
+                viewMaps.add(createViewMap(maps.get(i)));
         }
         model.addAttribute("maps", viewMaps);
         return "maps";
