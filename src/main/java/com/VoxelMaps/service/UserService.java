@@ -1,17 +1,12 @@
 package com.VoxelMaps.service;
 
-import com.VoxelMaps.model.Map;
 import com.VoxelMaps.model.Role;
 import com.VoxelMaps.model.User;
 import com.VoxelMaps.repository.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -40,10 +35,9 @@ public class UserService implements UserDetailsService {
         User userFromDB = userRepository.findByUsername(user.getUsername());
         if (userFromDB != null)
             return false;
-        user.setRoles(Collections.singleton(new Role(3L, "ROLE_USER")));
+        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword("{noop}" + user.getPassword());
         user.setPasswordConfirm(user.getPassword());
-        user.UserId = new Long(userRepository.count() + 1);
         userRepository.save(user);
         return true;
     }

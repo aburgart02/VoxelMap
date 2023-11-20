@@ -13,6 +13,7 @@ import java.util.Set;
 public class User implements UserDetails {
     @Id
     @Column(name = "UserId")
+    @GeneratedValue
     public Long UserId;
 
     private String username;

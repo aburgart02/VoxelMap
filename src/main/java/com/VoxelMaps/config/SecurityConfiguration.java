@@ -24,7 +24,8 @@ public class SecurityConfiguration {
             .disable()
             .authorizeRequests()
             .requestMatchers("/admin").hasRole("ADMIN")
-            .requestMatchers("/account").hasRole("USER")
+            .requestMatchers("/account").hasAnyRole("USER", "ADMIN")
+            .requestMatchers("/upload-map").hasAnyRole("USER", "ADMIN")
             .requestMatchers("/", "/registration", "/login", "/maps/**").permitAll();
 
 

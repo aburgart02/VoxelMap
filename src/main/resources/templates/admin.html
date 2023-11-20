@@ -6,6 +6,9 @@
 <body>
 <tr th:each="user : ${allUsers}">
     <td th:text="${user.username}"></td>
+    <form method="POST" action="/delete-user">
+        <button type="submit" name="id" th:value="${user.UserId}">Удалить</button>
+    </form>
 </tr>
 </body>
 </html>
