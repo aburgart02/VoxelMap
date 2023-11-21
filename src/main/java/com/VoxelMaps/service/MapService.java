@@ -13,8 +13,6 @@ public class MapService {
 
     //TODO Отрефакторить метод
     public boolean saveMap(Map map) {
-        map.setRating(0);
-        map.setDateOfAddition(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
         mapRepository.save(map);
         return true;
     }

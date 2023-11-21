@@ -26,6 +26,7 @@ public class SecurityConfiguration {
             .requestMatchers("/admin").hasRole("ADMIN")
             .requestMatchers("/account").hasAnyRole("USER", "ADMIN")
             .requestMatchers("/upload-map").hasAnyRole("USER", "ADMIN")
+            .requestMatchers("/add-to-favourites").hasAnyRole("USER", "ADMIN")
             .requestMatchers("/", "/registration", "/login", "/maps/**").permitAll();
 
 

@@ -68,9 +68,10 @@ public class MapsController {
                 weatherEffectsList.add(weatherEffects.get(map.getWeatherEffects()[i]));
             }
         }
+        String username = map.getAuthor() == null ? "null" : map.getAuthor().getUsername();
         return new ViewMap(map.getMapId(), map.getTitle(), size.get(map.getSize()), weatherEffectsList,
                 timeOfDay.get(map.getTimeOfDay()), gameMode.get(map.getGameMode()),  map.getDescription(),
-                map.getDateOfAddition(), map.getRating());
+                map.getDateOfAddition(), map.getRating(), username);
     }
 
     @RequestMapping("/maps/{id}")
@@ -82,7 +83,7 @@ public class MapsController {
         else {
             model.addAttribute("username", null);
         }
-        Map map = mapRepository.findAll().get((int) id - 1);
+        Map map = mapRepository.findById(id).get();
         model.addAttribute("map", createViewMap(map));
         return "map";
     }

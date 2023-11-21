@@ -24,7 +24,7 @@ public class MapFileService {
     }
 
     public byte[] downloadMapFile(int mapFileId) {
-        Optional<MapFile> dbMapFiles = Optional.ofNullable(mapFileRepository.findAll().get(mapFileId - 1));
+        Optional<MapFile> dbMapFiles = Optional.of(mapFileRepository.findById((long) mapFileId).get());
         return dbMapFiles.map(mapFile -> {
             try {
                 return FileUtils.decompressFile(mapFile.getMapFile());
@@ -36,7 +36,7 @@ public class MapFileService {
     }
 
     public String getMapName(int mapFileId) {
-        MapFile dbMapFiles = mapFileRepository.findAll().get(mapFileId - 1);
+        MapFile dbMapFiles = mapFileRepository.findById((long) mapFileId).get();
         return dbMapFiles.getName();
     }
 }

@@ -24,7 +24,7 @@ public class ImageService {
     }
 
     public byte[] downloadImage(int imageId) {
-        Optional<Image> dbImage = Optional.ofNullable(imageRepository.findAll().get(imageId - 1));
+        Optional<Image> dbImage = Optional.of(imageRepository.findById((long) imageId).get());
         return dbImage.map(image -> {
             try {
                 return FileUtils.decompressFile(image.getImageData());

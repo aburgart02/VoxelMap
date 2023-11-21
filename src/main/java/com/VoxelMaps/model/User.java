@@ -2,11 +2,13 @@ package com.VoxelMaps.model;
 
 import jakarta.persistence.*;
 //TODO Удалить и пересоздать таблицу
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Collection;
-import java.util.Set;
+
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +18,7 @@ public class User implements UserDetails {
     @GeneratedValue
     public Long UserId;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -23,6 +26,11 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "Author")
+    private List<Map> maps;
+
+    public String favouriteMaps = "";
 
     public User() {
     }
@@ -92,5 +100,26 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Map> getMaps() {
+        return maps;
+    }
+
+    public void setMaps(List<Map> maps) {
+        this.maps = maps;
+    }
+
+    public void addMap(Map map) {
+        maps.add(map);
+        map.setAuthor(this);
+    }
+
+    public String getFavouriteMaps() {
+        return favouriteMaps;
+    }
+
+    public void setFavouriteMaps(String favouriteMaps) {
+        this.favouriteMaps = favouriteMaps;
     }
 }

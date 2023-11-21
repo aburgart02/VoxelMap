@@ -7,5 +7,30 @@
 <body>
     <p>Мой профиль</p>
     <p th:text="${username}"></p>
+    <p>Загруженные карты</p>
+    <div th:each="map : ${maps}" class="mapContainer">
+        <div class="mapCard">
+            <p>
+                <img th:src="@{/download-image/} + ${map.Id}">
+            </p>
+            <a th:href="@{/maps/{id}(id=${map.Id})}">
+                <span th:text="${map.Title}"></span>
+            </a>
+        </div>
+    </div>
+    <p>Избранные карты</p>
+    <div th:each="map : ${favouriteMaps}" class="mapContainer">
+        <div class="mapCard">
+            <p>
+                <img th:src="@{/download-image/} + ${map.Id}">
+            </p>
+            <a th:href="@{/maps/{id}(id=${map.Id})}">
+                <span th:text="${map.Title}"></span>
+            </a>
+            <a th:href="@{/remove-from-favourites?mapId=} + ${map.Id}">
+                Удалить из избранного
+            </a>
+        </div>
+    </div>
 </body>
 </html>

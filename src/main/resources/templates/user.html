@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="${username}"></p>
+    <div th:each="map : ${maps}" class="mapContainer">
+        <div class="mapCard">
+            <p>
+                <img th:src="@{/download-image/} + ${map.Id}">
+            </p>
+            <a th:href="@{/maps/{id}(id=${map.Id})}">
+                <span th:text="${map.Title}"></span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.VoxelMaps.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Date;
 
@@ -42,6 +44,9 @@ public class Map {
 
     @Column(name = "map")
     public byte[] Map;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User Author;
 
     public Map() {
     }
@@ -126,5 +131,10 @@ public class Map {
     public byte[] getMap() { return Map; }
     public void setMap(byte[] map) {
         Map = map;
+    }
+
+    public User getAuthor() { return Author; }
+    public void setAuthor(User author) {
+        Author = author;
     }
 }

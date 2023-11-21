@@ -1,9 +1,11 @@
 package com.VoxelMaps.controller;
 
 import com.VoxelMaps.model.Map;
+import com.VoxelMaps.model.User;
 import com.VoxelMaps.service.ImageService;
 import com.VoxelMaps.service.MapFileService;
 import com.VoxelMaps.service.MapService;
+import com.VoxelMaps.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Optional;
 
 @Controller
@@ -25,6 +28,9 @@ public class MapUploadingController {
 
     @Autowired
     private MapFileService mapFileService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/upload-map")
     public String registration(Model model, HttpServletRequest request) {
@@ -68,6 +74,8 @@ public class MapUploadingController {
         MultipartFile mapFile = request.getFile("mapFile");
         String uploadImageFile = imageService.uploadImage(imageFile);
         String uploadMapFile = mapFileService.uploadMapFile(mapFile);
+        String userName = request.getUserPrincipal().getName();
+        User user = userService.loadUserByUsername(userName);
         Map map = new Map();
         map.setTitle(title);
         map.setSize(size);
@@ -75,6 +83,10 @@ public class MapUploadingController {
         map.setTimeOfDay(timeOfDay);
         map.setGameMode(gameMode);
         map.setDescription(description);
+        map.setRating(0);
+        map.setDateOfAddition(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+        user.addMap(map);
+        userService.saveUser(user);
         mapService.saveMap(map);
         response.sendRedirect("upload-map");
         return responseMessage;

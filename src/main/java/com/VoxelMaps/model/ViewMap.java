@@ -26,8 +26,10 @@ public class ViewMap {
 
     public byte[] Map;
 
-    public ViewMap(int id, String title, String size, ArrayList<String> weatherEffects,
-                   String timeOfDay, String gameMode, String description, Date dateOfAddition, int rating) {
+    public String Author;
+
+    public ViewMap(int id, String title, String size, ArrayList<String> weatherEffects, String timeOfDay,
+                   String gameMode, String description, Date dateOfAddition, int rating, String author) {
         Id = id;
         Title = title;
         Size = size;
@@ -37,5 +39,6 @@ public class ViewMap {
         Description = description;
         DateOfAddition = dateOfAddition;
         Rating = rating;
+        Author = author;
     }
 }
