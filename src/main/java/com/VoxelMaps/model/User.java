@@ -1,9 +1,6 @@
 package com.VoxelMaps.model;
 
 import jakarta.persistence.*;
-//TODO Удалить и пересоздать таблицу
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.Transient;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
