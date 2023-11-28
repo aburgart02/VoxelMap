@@ -1,11 +1,11 @@
 package com.VoxelMaps.service;
+
 import com.VoxelMaps.utils.FileUtils;
 import com.VoxelMaps.model.Image;
 import com.VoxelMaps.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.Optional;
 import java.util.zip.DataFormatException;

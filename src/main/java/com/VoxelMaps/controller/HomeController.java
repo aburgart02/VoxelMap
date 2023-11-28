@@ -1,5 +1,6 @@
 package com.VoxelMaps.controller;
 
+import com.VoxelMaps.utils.AuthorizationValidator;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,19 +12,7 @@ public class HomeController {
     @RequestMapping("/")
     public String getMainPage(ModelMap model, HttpServletRequest request)
     {
-        if (request.getUserPrincipal() != null) {
-            if (request.isUserInRole("ROLE_ADMIN")) {
-                model.addAttribute("isAdmin", true);
-            }
-            else {
-                model.addAttribute("isAdmin", false);
-            }
-            model.addAttribute("username", request.getUserPrincipal().getName());
-        }
-        else {
-            model.addAttribute("username", null);
-            model.addAttribute("isAdmin", false);
-        }
+        AuthorizationValidator.validateAuthorization(model, request);
         return "main";
     }
 }

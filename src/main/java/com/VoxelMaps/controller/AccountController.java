@@ -3,14 +3,12 @@ package com.VoxelMaps.controller;
 import com.VoxelMaps.model.Map;
 import com.VoxelMaps.model.User;
 import com.VoxelMaps.repository.MapRepository;
-import com.VoxelMaps.service.MapService;
 import com.VoxelMaps.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.ArrayList;
 import java.util.List;
 

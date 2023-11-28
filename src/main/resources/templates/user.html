@@ -7,7 +7,20 @@
     <title>Title</title>
 </head>
 <body>
-    <p th:text="${username}"></p>
+    <p class="map-title" th:text="${author}"></p>
+    <div th:switch="${username}" class="account">
+        <span th:case="null">
+            <a th:href="@{/login}">
+                Войти в профиль
+            </a>
+        </span>
+        <span th:case="*">
+            <a th:href="@{/account}">
+                <span th:text="${username}"></span>
+            </a>
+        </span>
+    </div>
+    <p>Загруженные карты</p>
     <div th:each="map : ${maps}" class="mapContainer">
         <div class="mapCard">
             <p>

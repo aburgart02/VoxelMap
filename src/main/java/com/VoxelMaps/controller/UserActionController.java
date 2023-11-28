@@ -1,21 +1,13 @@
 package com.VoxelMaps.controller;
 
-import com.VoxelMaps.model.Map;
 import com.VoxelMaps.model.User;
-import com.VoxelMaps.repository.MapRepository;
 import com.VoxelMaps.repository.UserRepository;
 import com.VoxelMaps.service.UserService;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class UserActionController {
@@ -26,8 +18,6 @@ public class UserActionController {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    MapRepository mapRepository;
 
     @RequestMapping(value="/add-to-favourites", method=RequestMethod.GET)
     private void addToFavourite(HttpServletRequest request, HttpServletResponse response) throws IOException {

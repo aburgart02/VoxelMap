@@ -4,20 +4,21 @@ import com.VoxelMaps.model.Role;
 import com.VoxelMaps.model.User;
 import com.VoxelMaps.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+
+    private static final String NO_ENCODING_TOKEN = "{noop}";
+
+    private final List<Role> roles = Arrays.asList(new Role(0L, "ROLE_ADMIN"),
+            new Role(1L, "ROLE_USER"));
 
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -31,13 +32,12 @@ public class UserService implements UserDetailsService {
         return new ArrayList<User>(userRepository.findAll());
     }
 
-    //TODO Отрефакторить метод
     public boolean saveUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
         if (userFromDB != null)
             return false;
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword("{noop}" + user.getPassword());
+        user.setRoles(Collections.singleton(roles.get(0)));
+        user.setPassword(NO_ENCODING_TOKEN + user.getPassword());
         user.setPasswordConfirm(user.getPassword());
         userRepository.save(user);
         return true;

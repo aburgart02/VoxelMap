@@ -1,9 +1,6 @@
 package com.VoxelMaps.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import java.sql.Date;
 
 @Entity

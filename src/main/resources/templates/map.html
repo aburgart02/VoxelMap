@@ -3,29 +3,19 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
     <meta charset="utf-8">
-    <title>Список карт</title>
+    <title>Карта</title>
 </head>
 <body>
     <p><a class="button" href="/">Главная</a></p>
     <div th:switch="${username}" class="account">
-            <span th:case="null">
-                <a th:href="@{/login}">
-                    Войти в профиль
-                </a>
-            </span>
-        <span th:case="*">
-                <a th:href="@{/account}">
-                    <span th:text="${username}"></span>
-                </a>
-            </span>
-    </div>
-    <div class="map-title" th:switch="${map.Author}">
-        <span th:case="'null'">
-            Аккаунт удалён
+        <span th:case="null">
+            <a th:href="@{/login}">
+                Войти в профиль
+            </a>
         </span>
         <span th:case="*">
-            <a th:href="@{/users/} + ${map.Author}">
-                <span th:text="${map.Author}"></span>
+            <a th:href="@{/account}">
+                <span th:text="${username}"></span>
             </a>
         </span>
     </div>

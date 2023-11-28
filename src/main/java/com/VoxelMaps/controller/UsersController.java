@@ -2,6 +2,7 @@ package com.VoxelMaps.controller;
 
 import com.VoxelMaps.model.User;
 import com.VoxelMaps.service.UserService;
+import com.VoxelMaps.utils.AuthorizationValidator;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,9 @@ public class UsersController {
         } catch (Exception e) {
             return "not-found";
         }
-        model.addAttribute("username", username);
+
+        AuthorizationValidator.validateAuthorization(model, request);
+        model.addAttribute("author", username);
         model.addAttribute("maps", user.getMaps());
         return "user";
     }

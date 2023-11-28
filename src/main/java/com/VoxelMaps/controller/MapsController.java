@@ -3,6 +3,7 @@ package com.VoxelMaps.controller;
 import com.VoxelMaps.model.ViewMap;
 import com.VoxelMaps.repository.MapRepository;
 import com.VoxelMaps.model.Map;
+import com.VoxelMaps.utils.AuthorizationValidator;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,12 +44,7 @@ public class MapsController {
 
     @RequestMapping("/maps")
     public String getMaps(ModelMap model, HttpServletRequest request) {
-        if (request.getUserPrincipal() != null) {
-            model.addAttribute("username", request.getUserPrincipal().getName());
-        }
-        else {
-            model.addAttribute("username", null);
-        }
+        AuthorizationValidator.validateAuthorization(model, request);
         var mapTitle = request.getParameter("title") != null ? request.getParameter("title") : "";
         List<Map> maps = new ArrayList<Map>(mapRepository.findAll());
         List<ViewMap> viewMaps = new ArrayList<ViewMap>();
@@ -77,12 +73,7 @@ public class MapsController {
     @RequestMapping("/maps/{id}")
     public String getMapById(ModelMap model, @PathVariable("id") long id, HttpServletRequest request)
     {
-        if (request.getUserPrincipal() != null) {
-            model.addAttribute("username", request.getUserPrincipal().getName());
-        }
-        else {
-            model.addAttribute("username", null);
-        }
+        AuthorizationValidator.validateAuthorization(model, request);
         Map map = mapRepository.findById(id).get();
         model.addAttribute("map", createViewMap(map));
         return "map";
