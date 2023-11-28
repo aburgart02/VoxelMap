@@ -23,7 +23,13 @@ public class AdminController {
     MapRepository mapRepository;
 
     @GetMapping("/admin")
-    public String userList(Model model) {
+    public String userList(Model model, HttpServletRequest request) {
+        if (request.getUserPrincipal() != null) {
+            model.addAttribute("username", request.getUserPrincipal().getName());
+        }
+        else {
+            model.addAttribute("username", null);
+        }
         model.addAttribute("allUsers", userService.allUsers());
         return "admin";
     }
