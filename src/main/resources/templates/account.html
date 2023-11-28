@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
+<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 <head>
     <meta charset="UTF-8">
     <title>Мой профиль</title>
 </head>
 <body>
-    <p>Мой профиль</p>
-    <p th:text="${username}"></p>
+    <p class="map-title" th:text="${username}"></p>
+    <p class="button">
+        <a href="/logout">Выйти из аккаунта</a>
+    </p>
+    <a class="button" href="/">Главная</a>
     <p>Загруженные карты</p>
     <div th:each="map : ${maps}" class="mapContainer">
         <div class="mapCard">

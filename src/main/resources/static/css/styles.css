@@ -1,18 +1,74 @@
+* {
+ color: black;
+ font-size: 30px;
+ font-family: Inter;
+ text-decoration: none;
+}
+
+.registration-title {
+    margin: 80px 225px 0px 225px;
+    color: white;
+}
+
+.login-title {
+    margin: 100px 225px 25px 225px;
+    color: white;
+}
+
+.login-registration-button {
+    width: 252px;
+    height: 92px;
+    border-radius: 10px;
+    margin: 0px 0px 0px 300px;
+}
+
+.login-button-div {
+    margin: 75px 25px 0px 25px;
+    background: black;
+}
+
+.registration-button-div {
+    margin: 5px 25px 0px 25px;
+    background: black;
+}
+
+.login-button-word {
+    position:absolute; margin: 25px 50px;
+    color: white;
+}
+
+.registration-button-word {
+    position:absolute; margin: 25px 92px;
+    color: white;
+}
+
+.login-registration-window{
+    width: 600px;
+    height: 600px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #006400;
+    border-radius: 10px
+}
+
+.login-registration-input{
+    margin: 25px 100px;
+    width: 329px;
+    height: 62px;
+}
+
 .account {
-    width: 20%;
-    height: 8%;
+    position: fixed;
+    width: 250px;
     left: 99%;
     top: 1%;
-    -webkit-transform: translate(-99%, -1%);
-    -ms-transform: translate(-99%, -1%);
     transform: translate(-99%, -1%);
     background: #006400;
     border-radius: 45px;
     color: white;
-    font-size: 30px;
-    position: absolute;
     text-align: center;
-    vertical-align: middle;
     line-height: 60px;
 }
 
@@ -21,28 +77,39 @@
     height: 7.5%;
     background: #006400;
     border-radius: 45px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 1%;
-    -webkit-transform: translate(-50%, -1%);
-    -ms-transform: translate(-50%, -1%);
     transform: translate(-50%, -1%);
     color: white;
-    font-size: 30px;
-    font-weight: 400;
-    word-wrap: break-word;
 }
 
-.search p {
-
+.button {
+    display: inline;
+    margin: 100px 0px 0px 50px;
+    width: 300px;
+    height: 50px;
+    background: #006400;
+    border-radius: 15px;
 }
 
-table {
-   position: fixed;
-   top: 25%;
-   left: 4%;
-   background: #D9D9D9;
-   border: 1px solid grey;
+.map-title{
+     width:329px;
+     background: dodgerblue;
+     border: solid darkgreen 10px;
+     border-radius:5px;
+}
+
+.map-images{
+    background: dodgerblue;
+    border: solid darkgreen 10px;
+    border-radius: 5px;
+}
+
+.map-description{
+    background: dodgerblue;
+    border: solid darkgreen 10px;
+    border-radius: 5px;
 }
 
 .map-upload {
@@ -94,10 +161,6 @@ table {
 .description {
     font-size: 30px;
     margin-top: 30px;
-}
-
-input {
-    font-size: 20px;
 }
 
 .file-loading {

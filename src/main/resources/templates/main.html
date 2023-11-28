@@ -1,14 +1,38 @@
 <!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
+    <meta charset="utf-8">
     <title>Главная</title>
 </head>
 <body>
-    <p><a href="/maps">Список карт</a></p>
-    <p><a href="/login">Войти в аккаунт</a></p>
-    <p><a href="/logout">Выйти из аккаунта</a></p>
-    <p><a href="/account">Мой профиль</a></p>
-    <p><a href="/registration">Зарегестрироваться</a></p>
-    <p><a href="/upload-map">Загрузить карту</a></p>
-    <p><a href="/admin">Админка</a></p>
+    <div th:switch="${username}" class="account">
+        <span th:case="null">
+            <a th:href="@{/login}">
+                Войти в профиль
+            </a>
+        </span>
+        <span th:case="*">
+            <a th:href="@{/account}">
+                <span th:text="${username}"></span>
+            </a>
+        </span>
+    </div>
+    <p class="button">
+        <a href="/maps">Список карт</a>
+    </p>
+    <p class="button">
+        <a href="/upload-map">Загрузить карту</a>
+    </p>
+    <div th:switch="${isAdmin}" class="button">
+        <span th:case="false">
+
+        </span>
+        <span th:case="true">
+            <p class="button">
+                <a href="/admin">Админка</a>
+            </p>
+        </span>
+    </div>
 </body>
 </html>

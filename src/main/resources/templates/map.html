@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
+    <meta charset="utf-8">
     <title>Список карт</title>
 </head>
 <body>
     <div th:switch="${username}" class="account">
             <span th:case="null">
                 <a th:href="@{/login}">
-                    Log in
+                    Войти в профиль
                 </a>
             </span>
         <span th:case="*">
@@ -17,14 +18,7 @@
                 </a>
             </span>
     </div>
-    <p th:text="${map.Title}"></p>
-    <p th:text="${map.DateOfAddition}"></p>
-    <p th:text="${map.Description}"></p>
-    <p th:text="${map.GameMode}"></p>
-    <p th:text="${map.Rating}"></p>
-    <p th:text="${map.Size}"></p>
-    <p th:text="${map.TimeOfDay}"></p>
-    <div th:switch="${map.Author}">
+    <div class="map-title" th:switch="${map.Author}">
         <span th:case="'null'">
             Аккаунт удалён
         </span>
@@ -34,18 +28,31 @@
             </a>
         </span>
     </div>
-    <tr th:each="weatherEffect: ${map.WeatherEffects}">
-        <td th:text="${weatherEffect}" />
-    </tr>
-    <img th:src="@{/download-image/} + ${map.Id}">
-    <a th:href="@{/download-map-file/} + ${map.Id}">Скачать карту</a>
-    <a th:href="@{/map-viewer?id=} + ${map.Id}">Смотреть карту</a>
-    <div th:switch="${username}">
-        <span th:case="*">
+    <div class="map-title">
+        <p th:text="${map.Title}"></p>
+    </div>
+    <div class="map-images">
+        <img th:src="@{/download-image/} + ${map.Id}">
+        <div th:switch="${username}">
+            <span th:case="*">
                 <a th:href="@{/add-to-favourites?mapId=} + ${map.Id}">
                     Добавить в избранное
                 </a>
-        </span>
+            </span>
+        </div>
     </div>
+    <div class="map-description">
+        <p th:text="${map.Size}"></p>
+        <tr th:each="weatherEffect: ${map.WeatherEffects}">
+            <td th:text="${weatherEffect}"></td>
+        </tr>
+        <p th:text="${map.TimeOfDay}"></p>
+        <p th:text="${map.GameMode}"></p>
+        <p th:text="${map.Description}"></p>
+        <p th:text="${map.DateOfAddition}"></p>
+    </div>
+    <a class="button" th:href="@{/download-map-file/} + ${map.Id}">Скачать карту</a>
+    <a class="button" th:href="@{/map-viewer?id=} + ${map.Id}">Смотреть карту</a>
+    <a class="button" href="/">Главная</a>
 </body>
 </html>

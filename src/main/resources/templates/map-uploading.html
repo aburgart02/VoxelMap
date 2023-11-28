@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <head>
     <meta charset="utf-8">
@@ -23,14 +23,18 @@
         <form method="POST" action="/upload-map" enctype="multipart/form-data">
             <h2>Загрузка карты</h2>
             <div>
-                <input class="title" placeholder="Название" name="title"/>
+                <label>
+                    <input required class="title" placeholder="Название" name="title"/>
+                </label>
                 <div class="size">
                     <p>Размер</p>
-                    <select name="size">
-                        <option value="0">128x128</option>
-                        <option value="1">256x256</option>
-                        <option value="2">512x512</option>
-                    </select>
+                    <label>
+                        <select name="size">
+                            <option value="0">128x128</option>
+                            <option value="1">256x256</option>
+                            <option value="2">512x512</option>
+                        </select>
+                    </label>
                 </div>
                 <div class="weather-effects">
                     <p>Погодные эффекты</p>

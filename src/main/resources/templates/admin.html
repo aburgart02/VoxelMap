@@ -1,13 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
 <head>
+    <meta charset="UTF-8">
     <title>Админ</title>
 </head>
 <body>
 <tr th:each="user : ${allUsers}">
+    <a class="button" href="/">Главная</a>
     <td th:text="${user.username}"></td>
     <form method="POST" action="/delete-user">
-        <button type="submit" name="id" th:value="${user.UserId}">Удалить</button>
+        <button class="button" type="submit" name="id" th:value="${user.UserId}">Удалить</button>
     </form>
 </tr>
 </body>

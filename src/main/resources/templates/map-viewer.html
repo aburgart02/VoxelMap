@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="script" type="text/javascript" th:href="@{/Build/MapViewer.loader.js}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Styles.css}">
 <link th:href="@{/Build/webgl.data}">
 <link rel="script" type="application/javascript" th:href="@{/Build/build.framework.js}">
 <link type="application/wasm" th:href="@{/Build/build.wasm}">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <a class="button" href="/">Главная</a>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
