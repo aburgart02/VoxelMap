@@ -6,6 +6,7 @@
     <title>Список карт</title>
 </head>
 <body>
+    <p><a class="button" href="/">Главная</a></p>
     <div th:switch="${username}" class="account">
             <span th:case="null">
                 <a th:href="@{/login}">
@@ -42,17 +43,28 @@
         </div>
     </div>
     <div class="map-description">
-        <p th:text="${map.Size}"></p>
+        <p th:text="'Размер карты: ' + ${map.Size}"></p>
         <tr th:each="weatherEffect: ${map.WeatherEffects}">
-            <td th:text="${weatherEffect}"></td>
+            <td th:text="'Погодные условия: ' + ${weatherEffect}"></td>
         </tr>
-        <p th:text="${map.TimeOfDay}"></p>
-        <p th:text="${map.GameMode}"></p>
-        <p th:text="${map.Description}"></p>
-        <p th:text="${map.DateOfAddition}"></p>
+        <p th:text="'Время суток: ' + ${map.TimeOfDay}"></p>
+        <p th:text="'Режим игры: ' + ${map.GameMode}"></p>
+        <p th:text="'Описание: ' + ${map.Description}"></p>
+        <p th:text="'Дата создания: ' + ${map.DateOfAddition}"></p>
+        <p>
+            <div th:switch="${map.Author}">
+                <span th:case="'null'">
+                    Аккаунт удалён
+                </span>
+                <span th:case="*">
+                    <a th:href="@{/users/} + ${map.Author}">
+                        <span th:text="'Автор: ' + ${map.Author}"></span>
+                    </a>
+                </span>
+            </div>
+        </p>
     </div>
     <a class="button" th:href="@{/download-map-file/} + ${map.Id}">Скачать карту</a>
     <a class="button" th:href="@{/map-viewer?id=} + ${map.Id}">Смотреть карту</a>
-    <a class="button" href="/">Главная</a>
 </body>
 </html>
