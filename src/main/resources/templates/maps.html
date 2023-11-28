@@ -9,7 +9,7 @@
     <div th:switch="${username}" class="account">
         <span th:case="null">
             <a th:href="@{/login}">
-                Log in
+                Войти в профиль
             </a>
         </span>
         <span th:case="*">
@@ -18,10 +18,10 @@
             </a>
         </span>
     </div>
+    <p><a class="button" href="/">Главная</a></p>
     <form method="GET" action="/maps">
         <input type="text" name="title" value="" size="30" />
         <button class="searchButton" type="submit" >Искать</button>
-        <a class="button" href="/">Главная</a>
     </form>
     <div th:each="map : ${maps}" class="mapContainer">
         <div class="mapCard">

@@ -5,6 +5,15 @@
  text-decoration: none;
 }
 
+.admin-button {
+    display: inline;
+    width: 300px;
+    height: 50px;
+    background: #006400;
+    border-radius: 15px;
+    text-align:center;
+}
+
 .registration-title {
     margin: 80px 225px 0px 225px;
     color: white;
@@ -85,19 +94,19 @@
 }
 
 .button {
-    display: inline;
-    margin: 100px 0px 0px 50px;
+    display: inline-block;
     width: 300px;
     height: 50px;
     background: #006400;
     border-radius: 15px;
+    text-align: center;
 }
 
 .map-title{
      width:329px;
      background: dodgerblue;
      border: solid darkgreen 10px;
-     border-radius:5px;
+     border-radius: 5px;
 }
 
 .map-images{

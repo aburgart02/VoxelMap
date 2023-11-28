@@ -6,7 +6,7 @@
     <title>Админ</title>
 </head>
 <body>
-    <a class="button" href="/">Главная</a>
+    <p><a class="button" href="/">Главная</a></p>
     <tr th:each="user : ${allUsers}">
         <td th:text="${user.username}"></td>
         <form method="POST" action="/delete-user">

@@ -7,11 +7,11 @@
     <title>Мой профиль</title>
 </head>
 <body>
+    <p><a class="button" href="/">Главная</a></p>
     <p class="map-title" th:text="${username}"></p>
     <p class="button">
         <a href="/logout">Выйти из аккаунта</a>
     </p>
-    <a class="button" href="/">Главная</a>
     <p>Загруженные карты</p>
     <div th:each="map : ${maps}" class="mapContainer">
         <div class="mapCard">

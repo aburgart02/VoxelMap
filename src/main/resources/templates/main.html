@@ -6,6 +6,12 @@
     <title>Главная</title>
 </head>
 <body>
+    <p class="button">
+        <a href="/maps">Список карт</a>
+    </p>
+    <p class="button">
+        <a href="/upload-map">Загрузить карту</a>
+    </p>
     <div th:switch="${username}" class="account">
         <span th:case="null">
             <a th:href="@{/login}">
@@ -18,13 +24,7 @@
             </a>
         </span>
     </div>
-    <p class="button">
-        <a href="/maps">Список карт</a>
-    </p>
-    <p class="button">
-        <a href="/upload-map">Загрузить карту</a>
-    </p>
-    <div th:switch="${isAdmin}" class="button">
+    <div th:switch="${isAdmin}">
         <span th:case="false">
 
         </span>
