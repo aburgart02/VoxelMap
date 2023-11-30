@@ -36,7 +36,7 @@ public class UserService implements UserDetailsService {
         User userFromDB = userRepository.findByUsername(user.getUsername());
         if (userFromDB != null)
             return false;
-        user.setRoles(Collections.singleton(roles.get(0)));
+        user.setRoles(Collections.singleton(roles.get(1)));
         user.setPassword(NO_ENCODING_TOKEN + user.getPassword());
         user.setPasswordConfirm(user.getPassword());
         userRepository.save(user);
